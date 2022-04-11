@@ -1,0 +1,19 @@
+<tr>
+  <td>
+    <%= image_tag item.product.image.tiny %>
+  </td>
+  <td>
+    <h4><%= item.product.name %></h4>
+    <br>
+    <p><%= item.product.description %></p>
+  </td>
+  <td>
+    <%= Money.from_cents(item.item_price_cents).format %>
+  </td>
+  <td>
+    <%= item.quantity %>
+  </td>
+  <td>
+    <%= Money.from_cents(item.total_price_cents).format %>
+  </td>
+</tr>
