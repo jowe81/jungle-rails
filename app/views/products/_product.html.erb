@@ -16,8 +16,12 @@
       Details &raquo;
     <% end %>
   </footer>
-
   <aside class="price">
     <%= product.price.format %>
   </aside>
+  <% if @products.find(product.id).quantity < 1 %>
+    <aside class="sold_out">
+      SOLD OUT
+    </aside>
+  <% end %>
 </article>
