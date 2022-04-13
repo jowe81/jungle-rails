@@ -29,4 +29,15 @@ class ApplicationController < ActionController::Base
     cookies[:cart]
   end
 
+  # Returns a user object if the session is logged in
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end  
+  helper_method :current_user
+
+  # Used by any controller that needs to be secured (before_filter:)
+  def authorize
+    redirect_to '/login' unless current_user
+  end
+
 end
