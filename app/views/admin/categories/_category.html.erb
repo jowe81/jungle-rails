@@ -1,0 +1,8 @@
+<tr>
+  <td>
+    <%= link_to category.name, category_path(category.id) %>
+  </td>
+  <td>
+    <%= link_to fa_icon('trash'), [:admin, category], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  </td>
+</tr>
