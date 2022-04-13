@@ -1,10 +1,20 @@
-<h1>Admin &raquo; Categories</h1>
-<table class="table text-center">
-    <th class="text-center">Registered Categories:</th>
-    <th class="text-center">Actions</th>
-  </thead>
-  <tbody>
-    <%= render @categories %>
+<section class="admin-categories-index">
 
-  </tbody>
-</table>
+  <header class="page-header">
+    <h1>Admin &raquo; All Categories</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New Category', new_admin_category_path, class: 'btn btn-info' %>
+  </div>
+
+  <table class="table text-center">
+      <th class="text-center">Category Name</th>
+      <th class="text-center">Products in Category</th>
+    </thead>
+    <tbody>
+      <%= render @categories %>
+    </tbody>
+  </table>
+
+<section>
