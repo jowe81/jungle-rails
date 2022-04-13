@@ -1,0 +1,14 @@
+<h1>Admin &raquo; Categories</h1>
+<table class="table text-center">
+    <th class="text-center">Registered Categories:</th>
+  </thead>
+  <tbody>
+    <% @categories.order(:name).each do |cat| %>
+    <tr>
+      <td>
+        <%= link_to cat.name, category_path(cat.id) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
