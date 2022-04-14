@@ -1,5 +1,13 @@
 class Sale < ActiveRecord::Base
 
+  # AR Scope
+  def self.active?
+    where("sales.starts_on < ? AND sales.ends_on >= ?", Date.current, Date.current).any?
+  end
+
+  # Alternate way to define AR Scope
+  #scope :active, -> { where("sales.starts_on < ? AND sales.ends_on >= ?", Date.current, Date.current).any? }
+
   def finished?
     self.ends_on < Date.current
   end
@@ -11,5 +19,7 @@ class Sale < ActiveRecord::Base
   def active?
     !upcoming? && !finished?
   end
+
+
 
 end
