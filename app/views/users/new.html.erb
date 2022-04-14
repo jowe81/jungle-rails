@@ -1,6 +1,18 @@
 <h1>Register</h1>
 <section>
-  <%= form_for :user, url: '/users' do |form| %>
+
+  <%= form_for @user, url: '/users' do |form| %>
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <strong>The following <%= pluralize(@user.errors.messages.count, 'error')%> prevented completing the registration:</strong>
+        <ul>
+          <% @user.errors.messages.each do |field, msg| %>
+            <li><%= field %> <%= msg[0] %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %> 
+    
     <div class="form-group">
       <%= form.label :name %>
       <%= form.text_field :name, class: 'form-control' %>
