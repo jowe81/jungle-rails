@@ -1,8 +1,8 @@
 class Sale < ActiveRecord::Base
 
-  # AR Scope - get currently active sales records
+  # AR Scope - get (first) currently active sales record
   def self.active
-    where("sales.starts_on < ? AND sales.ends_on >= ?", Date.current, Date.current)
+    where("sales.starts_on < ? AND sales.ends_on >= ?", Date.current, Date.current).first
   end
 
   # Alternate way to define AR Scope
