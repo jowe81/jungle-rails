@@ -10,4 +10,15 @@ class Product < ActiveRecord::Base
   validates :quantity, presence: true
   validates :category, presence: true
 
+  def sale_price_cents
+    if Sale.active
+      price_cents * (1 - Sale.active.percent_off / 100.to_f)
+    else
+      price_cents
+    end
+  end
+
+  def sale_price
+    Money.from_cents(sale_price_cents)
+  end
 end
