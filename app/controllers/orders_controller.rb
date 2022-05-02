@@ -53,6 +53,7 @@ class OrdersController < ApplicationController
       )
     end
     order.save!
+    puts UserMailer.order_confirmation(current_user, order).message
     order
   end
 

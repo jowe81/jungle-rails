@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Your order with ID <%= @order.id %> is confirmed!, <%= @rcpt %></h1>
+    <section class="orders-show">
+
+      <header class="page-header">
+        <h1>Order #<%= @order.id %></h1>
+      </header>
+
+      <div class="order-summary jumbotron">
+        <h4>Thank you for your order!</h4>
+        You created this order with the email address <strong><%= @order.email %></strong>.
+      </div>
+
+      <div class="panel panel-default items">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th colspan="2">Product</th>
+              <th>Unit Price</th>
+              <th>Quantity</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order.line_items.each do |item| %>
+              <%= render 'item', item: item %>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="4">
+                TOTAL for <%= @order.email %>:
+              </th>
+              <th>
+                <%= Money.from_cents(@order.total_cents).format %>
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+    </section>
+    </p>
+  </body>
+</html>
