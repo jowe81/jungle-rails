@@ -54,6 +54,8 @@ class OrdersController < ApplicationController
     end
     order.save!
     # Preview of email: http://localhost:3000/rails/mailers/user_mailer/order_confirmation
+    # (Do not actually deliver)
+    # UserMailer.order_confirmation(current_user, order).deliver_later
     order
   end
 
